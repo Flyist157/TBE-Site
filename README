@@ -1,1 +1,13 @@
+# Tom Brown Enterprise Corp Website
 
+Simple, responsive business website for **Tom Brown Enterprise Corp**, a modern earthwork and grading company.
+
+## Files
+
+- `index.html` - Main website markup
+- `styles.css` - Visual design and responsive layout
+- `script.js` - Mobile nav and form interaction
+
+## Run locally
+
+Open `index.html` directly in a browser, or serve with a local static server.
