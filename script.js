@@ -4,8 +4,15 @@ const nav = document.querySelector(".site-nav");
 const quoteForm = document.querySelector(".quote-form");
 const formNote = document.querySelector(".form-note");
 const yearNode = document.querySelector("#year");
-const parallaxBands = Array.from(document.querySelectorAll("[data-parallax-band]"));
-const revealBlocks = Array.from(document.querySelectorAll("[data-reveal]"));
+const scenes = Array.from(document.querySelectorAll("[data-parallax-scene]"));
+const revealBlocks = Array.from(document.querySelectorAll(".reveal"));
+const sectionAnchors = Array.from(document.querySelectorAll(".section-anchor[id]"));
+const navLinks = nav
+  ? Array.from(nav.querySelectorAll("a[href^='#']")).filter((link) =>
+      sectionAnchors.some((section) => `#${section.id}` === link.getAttribute("href"))
+    )
+  : [];
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (yearNode) {
   yearNode.textContent = String(new Date().getFullYear());
@@ -62,35 +69,61 @@ if (revealBlocks.length) {
   }
 }
 
-if (parallaxBands.length) {
+const setActiveNavLink = () => {
+  if (!navLinks.length || !sectionAnchors.length) {
+    return;
+  }
+
+  let currentId = sectionAnchors[0].id;
+  let nearestDistance = Number.POSITIVE_INFINITY;
+
+  sectionAnchors.forEach((section) => {
+    const distance = Math.abs(section.getBoundingClientRect().top - 140);
+    if (distance < nearestDistance) {
+      nearestDistance = distance;
+      currentId = section.id;
+    }
+  });
+
+  navLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === `#${currentId}`;
+    link.classList.toggle("is-active", isActive);
+  });
+};
+
+if (scenes.length || navLinks.length) {
   let isTicking = false;
 
-  const updateParallax = () => {
-    const viewportHeight = window.innerHeight || 1;
+  const updateMotion = () => {
+    setActiveNavLink();
 
-    parallaxBands.forEach((band) => {
-      const rect = band.getBoundingClientRect();
-      const centerOffset = (rect.top + rect.height * 0.5 - viewportHeight * 0.5) / viewportHeight;
-      const imageShift = Math.max(-48, Math.min(48, centerOffset * -52));
-      const textShift = Math.max(-26, Math.min(26, centerOffset * -30));
+    if (!prefersReducedMotion && scenes.length) {
+      const viewportHeight = window.innerHeight || 1;
 
-      band.style.setProperty("--image-shift", `${imageShift.toFixed(2)}px`);
-      band.style.setProperty("--text-shift", `${textShift.toFixed(2)}px`);
-    });
+      scenes.forEach((scene) => {
+        const rect = scene.getBoundingClientRect();
+        const centerOffset = (rect.top + rect.height * 0.5 - viewportHeight * 0.5) / viewportHeight;
+        const imageShift = Math.max(-72, Math.min(72, centerOffset * -68));
+        const textShift = Math.max(-28, Math.min(28, centerOffset * -24));
+
+        scene.style.setProperty("--parallax-shift", `${imageShift.toFixed(2)}px`);
+        scene.style.setProperty("--text-shift", `${textShift.toFixed(2)}px`);
+      });
+    }
 
     isTicking = false;
   };
 
-  const requestParallaxUpdate = () => {
+  const requestMotionUpdate = () => {
     if (isTicking) {
       return;
     }
 
     isTicking = true;
-    window.requestAnimationFrame(updateParallax);
+    window.requestAnimationFrame(updateMotion);
   };
 
-  updateParallax();
-  window.addEventListener("scroll", requestParallaxUpdate, { passive: true });
-  window.addEventListener("resize", requestParallaxUpdate);
+  updateMotion();
+  window.addEventListener("scroll", requestMotionUpdate, { passive: true });
+  window.addEventListener("resize", requestMotionUpdate);
 }
