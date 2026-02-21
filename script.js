@@ -98,13 +98,10 @@ if (scenes.length || navLinks.length) {
     setActiveNavLink();
 
     if (!prefersReducedMotion && scenes.length) {
-      const viewportHeight = window.innerHeight || 1;
-
       scenes.forEach((scene) => {
         const rect = scene.getBoundingClientRect();
-        const centerOffset = (rect.top + rect.height * 0.5 - viewportHeight * 0.5) / viewportHeight;
-        const imageShift = Math.max(-72, Math.min(72, centerOffset * -68));
-        const textShift = Math.max(-28, Math.min(28, centerOffset * -24));
+        const imageShift = Math.max(-32, Math.min(32, -rect.top * 0.08));
+        const textShift = Math.max(-22, Math.min(22, -rect.top * 0.09));
 
         scene.style.setProperty("--parallax-shift", `${imageShift.toFixed(2)}px`);
         scene.style.setProperty("--text-shift", `${textShift.toFixed(2)}px`);
