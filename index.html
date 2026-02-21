@@ -45,14 +45,22 @@
     </header>
 
     <main>
-      <section class="hero">
+      <section class="hero-stage">
+        <img
+          class="hero-media"
+          src="DSC01493.jpg"
+          alt="Compact track loader staged and ready for precision grading."
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="hero-shade"></div>
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Trusted Sitework Specialists</p>
             <h1>Precision Earthwork & Grading Built for Lasting Results</h1>
             <p class="hero-lead">
-              Tom Brown Enterprise Corp helps developers, builders, and property owners
-              start strong with dependable excavation, grading, and site preparation.
+              Tom Brown Enterprise Corp helps developers, builders, and property owners start
+              strong with dependable excavation, grading, and site preparation.
             </p>
             <div class="hero-cta">
               <a class="btn btn-primary" href="#contact">Request a Bid</a>
@@ -60,58 +68,8 @@
             </div>
           </div>
 
-          <aside class="hero-panel" aria-label="Company highlights and field visuals">
+          <aside class="hero-panel" aria-label="Company highlights">
             <h2>Built on Reliability</h2>
-            <div class="hero-photo-grid">
-              <figure class="media-frame hero-photo hero-photo--lead">
-                <button
-                  class="photo-trigger"
-                  type="button"
-                  data-full="DSC01493.jpg"
-                  data-caption="Loader setup and early material staging."
-                >
-                  <img
-                    src="DSC01493.jpg"
-                    alt="John Deere compact track loader staged beside a sand pile at project site."
-                    loading="eager"
-                    decoding="async"
-                  />
-                </button>
-                <figcaption>Loader setup and early material staging.</figcaption>
-              </figure>
-              <figure class="media-frame hero-photo hero-photo--detail">
-                <button
-                  class="photo-trigger"
-                  type="button"
-                  data-full="DSC01495.jpg"
-                  data-caption="Branded equipment details on-site."
-                >
-                  <img
-                    src="DSC01495.jpg"
-                    alt="Close-up of Tom Brown Enterprise Corp branding on a John Deere 333G loader."
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </button>
-                <figcaption>Branded equipment details on-site.</figcaption>
-              </figure>
-              <figure class="media-frame hero-photo hero-photo--action">
-                <button
-                  class="photo-trigger"
-                  type="button"
-                  data-full="DSC01497.jpg"
-                  data-caption="Track loader turning through loose soil."
-                >
-                  <img
-                    src="DSC01497.jpg"
-                    alt="Track loader turning through loose soil during early grading operations."
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </button>
-                <figcaption>Track loader turning through loose soil.</figcaption>
-              </figure>
-            </div>
             <div class="stat-grid">
               <article class="stat-card">
                 <strong>15+</strong>
@@ -139,56 +97,6 @@
           <div class="section-heading">
             <p class="eyebrow">What We Do</p>
             <h2>Comprehensive Earthwork & Grading Services</h2>
-          </div>
-          <div class="services-photo-strip" aria-label="Earthwork in progress">
-            <figure class="media-frame inline-photo">
-              <button
-                class="photo-trigger"
-                type="button"
-                data-full="DSC01504.jpg"
-                data-caption="Cutting and shaping elevation for drainage."
-              >
-                <img
-                  src="DSC01504.jpg"
-                  alt="Loader cutting into a mound to shape elevation and drainage."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <figcaption>Cutting and shaping elevation for drainage.</figcaption>
-            </figure>
-            <figure class="media-frame inline-photo">
-              <button
-                class="photo-trigger"
-                type="button"
-                data-full="DSC01509.jpg"
-                data-caption="Bucket pass for rough grading and compaction."
-              >
-                <img
-                  src="DSC01509.jpg"
-                  alt="Front bucket pushing and consolidating earth across the work area."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <figcaption>Bucket pass for rough grading and compaction.</figcaption>
-            </figure>
-            <figure class="media-frame inline-photo">
-              <button
-                class="photo-trigger"
-                type="button"
-                data-full="DSC01513.jpg"
-                data-caption="Material release during lot leveling."
-              >
-                <img
-                  src="DSC01513.jpg"
-                  alt="Raised bucket releasing soil while crew rough-grades the lot."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <figcaption>Material release during lot leveling.</figcaption>
-            </figure>
           </div>
           <div class="card-grid">
             <article class="service-card">
@@ -237,6 +145,40 @@
         </div>
       </section>
 
+      <section class="photo-band photo-band--portrait is-right" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01495.jpg"
+          alt="Close detail of company branding on heavy equipment in the field."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>Professional crews, professional presentation.</h2>
+            <p>Every phase is approached with clean execution and clear accountability.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-band" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01497.jpg"
+          alt="Track loader in motion shaping loose soil across the project footprint."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>Field momentum that keeps your schedule moving.</h2>
+            <p>Fast, controlled grading progress from first pass to final elevation.</p>
+          </div>
+        </div>
+      </section>
+
       <section class="section projects" id="projects">
         <div class="container">
           <div class="section-heading">
@@ -245,19 +187,6 @@
           </div>
           <div class="project-grid">
             <article class="project-card">
-              <button
-                class="photo-trigger project-photo"
-                type="button"
-                data-full="DSC01525.jpg"
-                data-caption="Controlled fill placement with loaded bucket."
-              >
-                <img
-                  src="DSC01525.jpg"
-                  alt="John Deere 333G carrying a full bucket for controlled fill placement."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
               <h3>Commerce Ridge Business Park</h3>
               <p>
                 18-acre site balancing, utility corridor prep, and phased grading to support
@@ -265,19 +194,6 @@
               </p>
             </article>
             <article class="project-card">
-              <button
-                class="photo-trigger project-photo"
-                type="button"
-                data-full="DSC01529.jpg"
-                data-caption="Finish passes near an active residential build."
-              >
-                <img
-                  src="DSC01529.jpg"
-                  alt="Compact track loader grading near a newly built residential property."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
               <h3>North Valley Residential Expansion</h3>
               <p>
                 Multi-lot grading and drainage shaping with strict neighborhood access and
@@ -285,25 +201,63 @@
               </p>
             </article>
             <article class="project-card">
-              <button
-                class="photo-trigger project-photo"
-                type="button"
-                data-full="DSC01557.jpg"
-                data-caption="Equipment lineup ready for the next grading phase."
-              >
-                <img
-                  src="DSC01557.jpg"
-                  alt="Tom Brown Enterprise equipment lineup ready for the next grading phase."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
               <h3>Granite Creek Logistics Yard</h3>
               <p>
                 Heavy-duty subgrade prep and compaction support for high-traffic truck
                 movement and long-term durability.
               </p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-band is-right" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01504.jpg"
+          alt="Compact loader cutting into material to shape grade and site drainage."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>Grade control starts with disciplined cuts.</h2>
+            <p>We establish clean drainage paths and stable buildable surfaces from day one.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-band" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01509.jpg"
+          alt="Front bucket pass consolidating soil for rough grading and prep."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>Rough grading with control, not guesswork.</h2>
+            <p>Each pass is coordinated to support compaction, flow, and next-step efficiency.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-band is-right" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01513.jpg"
+          alt="Material release from raised bucket during lot shaping operations."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>Consistent fill placement across the entire pad.</h2>
+            <p>Balanced distribution helps prevent rework and keeps downstream trades on track.</p>
           </div>
         </div>
       </section>
@@ -338,6 +292,40 @@
         </div>
       </section>
 
+      <section class="photo-band" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01525.jpg"
+          alt="Track loader carrying a full bucket for controlled fill movement."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>High-volume movement with precise placement.</h2>
+            <p>Production speed and finish quality stay aligned throughout the project lifecycle.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-band is-right" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01529.jpg"
+          alt="Grading operations underway beside active residential construction."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>Execution that fits active neighborhoods.</h2>
+            <p>Clean jobsite behavior and smart sequencing reduce friction for everyone on site.</p>
+          </div>
+        </div>
+      </section>
+
       <section class="section about" id="about">
         <div class="container about-grid">
           <div>
@@ -354,32 +342,65 @@
               keep schedules moving and sites inspection-ready.
             </p>
           </div>
-          <div class="about-side">
-            <figure class="media-frame about-photo">
-              <button
-                class="photo-trigger"
-                type="button"
-                data-full="DSC01546.jpg"
-                data-caption="Utility tractor supporting final surface prep."
-              >
-                <img
-                  src="DSC01546.jpg"
-                  alt="Utility tractor pulling grading equipment across a cleared section of the site."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <figcaption>Utility tractor supporting final surface prep.</figcaption>
-            </figure>
-            <div class="about-panel">
-              <h3>Safety & Standards</h3>
-              <ul>
-                <li>Site-specific safety planning on every job</li>
-                <li>Daily equipment and hazard inspections</li>
-                <li>Quality checks against plan elevations</li>
-                <li>Clear reporting and milestone updates</li>
-              </ul>
-            </div>
+          <div class="about-panel">
+            <h3>Safety & Standards</h3>
+            <ul>
+              <li>Site-specific safety planning on every job</li>
+              <li>Daily equipment and hazard inspections</li>
+              <li>Quality checks against plan elevations</li>
+              <li>Clear reporting and milestone updates</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-band" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01546.jpg"
+          alt="Utility tractor crossing open grade during surface preparation."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>Support equipment that keeps finish work tight.</h2>
+            <p>Every machine has a role in achieving final line, grade, and surface consistency.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-band is-right" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01548.jpg"
+          alt="Heavy-duty site support truck staged on active project terrain."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>Reliable support from mobilization through closeout.</h2>
+            <p>Field logistics stay synchronized so crews can keep delivering forward progress.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="photo-band" data-parallax-band>
+        <img
+          class="photo-band-image"
+          src="DSC01557.jpg"
+          alt="Full equipment lineup prepared for the next project phase."
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="photo-band-shade"></div>
+        <div class="container">
+          <div class="photo-band-copy" data-reveal>
+            <h2>The right fleet, staged and ready for what comes next.</h2>
+            <p>When teams and equipment are aligned, schedules feel lighter and outcomes improve.</p>
           </div>
         </div>
       </section>
@@ -398,22 +419,6 @@
               <li><strong>Email:</strong> info@tombrownenterprise.com</li>
               <li><strong>Service Area:</strong> Regional commercial and residential projects</li>
             </ul>
-            <figure class="media-frame contact-photo">
-              <button
-                class="photo-trigger"
-                type="button"
-                data-full="DSC01548.jpg"
-                data-caption="Support vehicle on site during earthwork operations."
-              >
-                <img
-                  src="DSC01548.jpg"
-                  alt="Heavy-duty work truck positioned on site to support earthmoving operations."
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <figcaption>Support vehicle on site during earthwork operations.</figcaption>
-            </figure>
           </div>
           <form class="quote-form" aria-label="Quote request form">
             <label>
@@ -459,30 +464,6 @@
         <p>© <span id="year"></span> Tom Brown Enterprise Corp. All rights reserved.</p>
       </div>
     </footer>
-
-    <div
-      class="lightbox"
-      id="photo-lightbox"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Expanded project photo"
-      hidden
-    >
-      <div class="lightbox-dialog">
-        <button
-          class="lightbox-close"
-          type="button"
-          aria-label="Close photo viewer"
-          data-lightbox-close
-        >
-          Close
-        </button>
-        <div class="lightbox-image-wrap">
-          <img class="lightbox-image" src="" alt="" />
-        </div>
-        <p class="lightbox-caption"></p>
-      </div>
-    </div>
 
     <script src="script.js"></script>
   </body>

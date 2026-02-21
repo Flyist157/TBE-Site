@@ -4,13 +4,8 @@ const nav = document.querySelector(".site-nav");
 const quoteForm = document.querySelector(".quote-form");
 const formNote = document.querySelector(".form-note");
 const yearNode = document.querySelector("#year");
-const lightbox = document.querySelector("#photo-lightbox");
-const photoTriggers = document.querySelectorAll(".photo-trigger");
-const lightboxImage = lightbox ? lightbox.querySelector(".lightbox-image") : null;
-const lightboxCaption = lightbox ? lightbox.querySelector(".lightbox-caption") : null;
-const lightboxClose = lightbox ? lightbox.querySelector("[data-lightbox-close]") : null;
-
-let lastFocusedTrigger = null;
+const parallaxBands = Array.from(document.querySelectorAll("[data-parallax-band]"));
+const revealBlocks = Array.from(document.querySelectorAll("[data-reveal]"));
 
 if (yearNode) {
   yearNode.textContent = String(new Date().getFullYear());
@@ -47,56 +42,55 @@ if (quoteForm && formNote) {
   });
 }
 
-const closeLightbox = () => {
-  if (!lightbox || !lightboxImage || !lightboxCaption || lightbox.hasAttribute("hidden")) {
-    return;
+if (revealBlocks.length) {
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.2 }
+    );
+
+    revealBlocks.forEach((block) => revealObserver.observe(block));
+  } else {
+    revealBlocks.forEach((block) => block.classList.add("is-visible"));
   }
+}
 
-  lightbox.setAttribute("hidden", "");
-  lightboxImage.src = "";
-  lightboxImage.alt = "";
-  lightboxCaption.textContent = "";
-  document.body.classList.remove("lightbox-open");
+if (parallaxBands.length) {
+  let isTicking = false;
 
-  if (lastFocusedTrigger instanceof HTMLElement) {
-    lastFocusedTrigger.focus();
-    lastFocusedTrigger = null;
-  }
-};
+  const updateParallax = () => {
+    const viewportHeight = window.innerHeight || 1;
 
-if (photoTriggers.length && lightbox && lightboxImage && lightboxCaption && lightboxClose) {
-  photoTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      const filePath = trigger.getAttribute("data-full");
+    parallaxBands.forEach((band) => {
+      const rect = band.getBoundingClientRect();
+      const centerOffset = (rect.top + rect.height * 0.5 - viewportHeight * 0.5) / viewportHeight;
+      const imageShift = Math.max(-48, Math.min(48, centerOffset * -52));
+      const textShift = Math.max(-26, Math.min(26, centerOffset * -30));
 
-      if (!filePath) {
-        return;
-      }
-
-      const previewImage = trigger.querySelector("img");
-      const caption = trigger.getAttribute("data-caption") || previewImage?.alt || "";
-
-      lightboxImage.src = filePath;
-      lightboxImage.alt = previewImage?.alt || "Expanded project photo";
-      lightboxCaption.textContent = caption;
-      lightbox.removeAttribute("hidden");
-      document.body.classList.add("lightbox-open");
-      lastFocusedTrigger = trigger;
-      lightboxClose.focus();
+      band.style.setProperty("--image-shift", `${imageShift.toFixed(2)}px`);
+      band.style.setProperty("--text-shift", `${textShift.toFixed(2)}px`);
     });
-  });
 
-  lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-      closeLightbox();
+    isTicking = false;
+  };
+
+  const requestParallaxUpdate = () => {
+    if (isTicking) {
+      return;
     }
-  });
 
-  lightboxClose.addEventListener("click", closeLightbox);
+    isTicking = true;
+    window.requestAnimationFrame(updateParallax);
+  };
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeLightbox();
-    }
-  });
+  updateParallax();
+  window.addEventListener("scroll", requestParallaxUpdate, { passive: true });
+  window.addEventListener("resize", requestParallaxUpdate);
 }
